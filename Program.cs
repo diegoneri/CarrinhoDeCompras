@@ -10,7 +10,29 @@ var produtosDisponiveis = new List<Produto>()
     new Produto() { Codigo = 4, Descricao = "Camisa GG", Preco = 55}
 };
 
-ExibirListaDeProdutos(produtosDisponiveis);
+string opcao = "";
+
+while (opcao != "FINALIZAR")
+{
+    Console.Write("\n[P]rodutos, [A]dicionar, [C]arrinho, [L]impar, [F]inalizar: ");
+    opcao = Console.ReadLine()!.ToUpper().Trim().Substring(0, 1);
+
+    switch(opcao)
+    {
+        case "P":
+            ExibirListaDeProdutos(produtosDisponiveis);
+            break;
+        case "A":
+        case "C":
+        case "L":
+        case "F":
+            Console.WriteLine("Funcionalidade em construção...");
+            break;        
+        default:
+            Console.WriteLine("Opcão inválida!");
+            break;
+    }
+}
 
 void ExibirListaDeProdutos(List<Produto> produtos)
 {
@@ -20,15 +42,4 @@ void ExibirListaDeProdutos(List<Produto> produtos)
     produtos.ForEach(produto => {
         Console.WriteLine($"| {produto.Codigo}      | {produto.Descricao}    | {produto.Preco:C2}       |");    
     });
-
-    // for (int i = 0; i < produtosDisponiveis.Count; i++)
-    // {
-    //     Produto produto = produtosDisponiveis[i];
-    //     Console.WriteLine($"| {produto.Codigo}   | {produto.Descricao}  | {produto.Preco:C2} |");    
-    // }
-
-    // foreach(var produto in produtos)
-    // {
-    //     Console.WriteLine($"| {produto.Codigo}   | {produto.Descricao}  | {produto.Preco:C2} |");    
-    // } 
 }
